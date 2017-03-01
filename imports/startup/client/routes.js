@@ -3,6 +3,7 @@ import '../../ui/layouts/baseLayout.js';
 import '../../ui/components/inici/inici.js';
 import '../../ui/pages/burger.js';
 import '../../ui/pages/comandes.js';
+import '../../ui/pages/insertProducte.js';
 
 Router.configure({
   layoutTemplate: 'baseLayout'
@@ -18,4 +19,8 @@ Router.route('/burger',function(){
 
 Router.route('/comandes',function(){
   this.render('comandes');
+});
+
+Router.route('/insertProducte',function(){
+  this.render('insertProducte');
 });
