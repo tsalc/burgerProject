@@ -6,12 +6,10 @@ import { Producte } from "./producte/producte.js";
 export const crearProducte = new ValidatedMethod({
   name: "producte.add",
   validate: new SimpleSchema({
-    id: { type: String},
-    nom: { type: String},
-    esgotat: { type: Boolean },
-    color:  {type: String}
+    nom: { type: String}
   }).validator(),
-  run({id, nom, esgotat, color}){
-    return Producte.insert({id:id, nom:nom, esgotat:esgotat, color:color});
+  run({id, nom}){
+    return Producte.insert({nom:nom});
+    alert("Producte afegit.");
   }
 });
