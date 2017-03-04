@@ -25,3 +25,5 @@ iron:router
 mdg:validated-method
 aldeed:simple-schema
 meteortoys:allthings
+cfs:standard-packages
+cfs:gridfs

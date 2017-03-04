@@ -23,4 +23,5 @@ Router.route('/comandes',function(){
 
 Router.route('/insertProducte',function(){
   this.render('insertProducte');
+    return Meteor.subscribe('images')
 });
