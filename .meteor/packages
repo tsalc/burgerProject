@@ -27,3 +27,4 @@ aldeed:simple-schema
 meteortoys:allthings
 cfs:standard-packages
 cfs:gridfs
+cfs:filesystem

@@ -1,6 +1,6 @@
 export const Producte = new Mongo.Collection('producte');
 
-var imageStore = new FS.Store.GridFS("images");
+var imageStore = new FS.Store.FileSystem("images", {path: process.env.PWD + "/public/assets/img/uploads"});
 
 export const Images = new FS.Collection("images", {
   stores: [imageStore]
