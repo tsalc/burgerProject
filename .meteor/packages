@@ -28,3 +28,9 @@ meteortoys:allthings
 cfs:standard-packages
 cfs:gridfs
 cfs:filesystem
+
+cfs:collection
+cfs:graphicsmagick
+cfs:s3
+cfs:tempstore
+cfs:power-queue
