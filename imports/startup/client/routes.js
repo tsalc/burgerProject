@@ -4,6 +4,7 @@ import '../../ui/components/inici/inici.js';
 import '../../ui/pages/burger.js';
 import '../../ui/pages/comandes.js';
 import '../../ui/pages/insertProducte.js';
+import '../../ui/components/provaFotos/provaFotos.js';
 
 Router.configure({
   layoutTemplate: 'baseLayout'
@@ -24,4 +25,8 @@ Router.route('/comandes',function(){
 Router.route('/insertProducte',function(){
   this.render('insertProducte');
     return Meteor.subscribe('images')
+});
+
+Router.route('/prova',function(){
+  this.render('provaFotos');
 });

@@ -1,0 +1,1 @@
+import './provaFotos.html'; 
