@@ -6,6 +6,7 @@ import '../../ui/pages/burger.js';
 import '../../ui/pages/comandes.js';
 import '../../ui/pages/insertProducte.js';
 import '../../ui/pages/insertIngredient.js';
+import '../../ui/pages/insertSubingredient.js';
 import '../../ui/pages/productes.js';
 
 Router.configure({
@@ -31,6 +32,11 @@ Router.route('/insertProducte',function(){
 
 Router.route('/insertIngredient',function(){
   this.render('insertIngredient');
+    return Meteor.subscribe('images')
+});
+
+Router.route('/insertSubingredient',function(){
+  this.render('insertSubingredient');
     return Meteor.subscribe('images')
 });
 
