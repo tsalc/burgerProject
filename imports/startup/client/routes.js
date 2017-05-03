@@ -5,6 +5,7 @@ import '../../ui/components/inici/inici.js';
 import '../../ui/pages/burger.js';
 import '../../ui/pages/comandes.js';
 import '../../ui/pages/insertProducte.js';
+import '../../ui/components/provaFotos/provaFotos.js';
 import '../../ui/pages/insertIngredient.js';
 import '../../ui/pages/insertSubingredient.js';
 import '../../ui/pages/productes.js';
@@ -28,6 +29,10 @@ Router.route('/comandes',function(){
 Router.route('/insertProducte',function(){
   this.render('insertProducte');
     return Meteor.subscribe('images')
+});
+
+Router.route('/prova',function(){
+  this.render('provaFotos');
 });
 
 Router.route('/insertIngredient',function(){

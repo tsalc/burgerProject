@@ -156,6 +156,42 @@ Image credits: unsplash.com
 @media screen and (max-width: 640px){
     .hero h1 { font-size: 4em; }
 }
+/********************************/
+/*          Productes           */
+/********************************/
+.hamburguesaCreada img{
+  width: 300px;
+  position: absolute;
+  left: 0px;
+}
+.paSuperior img{
+  top: 70px;
+  z-index: -1;
+}
+.producte1 img{
+  top: 110px;
+  z-index: -10;
+}
+.producte2 img{
+  top: 130px;
+  z-index: -20;
+}
+.producte3 img{
+  top: 140px;
+  z-index: -30;
+}
+.producte4 img{
+  top: 170px;
+  z-index: -40;
+}
+.producte5 img{
+  top: 190px;
+  z-index: -50;
+}
+.paInferior img{
+  top: 230px;
+  z-index: -60;
+}
 
 /********************************/
 /*      Biblioteca de fonts     */
