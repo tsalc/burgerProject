@@ -5,24 +5,15 @@
         {{#each producte}}
           <!-- {{nomImatgeProducte _id }} -->
           {{#each imatge _id}}
-            <p><img src="{{url}}" class="w3-round-xxlarge" alt="Norway" style="width:30%"></p>
+            <p><a href="producte/{{../_id}}"><img src="{{url}}" class="w3-circle" style="width:90%"><p class="permanent" style="font-size:200%;">{{../nom}}</p></a></p>
           {{/each}}
-          <p><a href="producte/{{_id}}">{{nom}}</a></p>
         {{/each}}
       </div>
-      <div class="col-sm-8 text-left" style="background: #cc6600;">
-        <h1 class="permanent" style="text-align: center; font-size:80px; color:white;">Tria el producte que vulguis i personalitza'l!</h1>
-        <hr>
-        <h3>Test</h3>
-        <p>Lorem ipsum...</p>
+      <div class="col-sm-8 text-left">
+        <!-- <img class="center" src="https://cdn.shopify.com/s/files/1/1034/4213/files/Burger_Box_-Img1_large.png?v=1489442007"> -->
       </div>
       <div class="col-sm-2 sidenav">
-        <div class="well">
-          <p>ADS</p>
-        </div>
-        <div class="well">
-          <p>ADS</p>
-        </div>
+        
       </div>
     </div>
   </div>

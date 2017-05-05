@@ -28,7 +28,7 @@ Template.insertIngredient.events({
         console.log('Registre afegit correctament (insertarIngredient.js)');
       }
     });
-},
+  },
 
 
   'change .form': function(event, template) {

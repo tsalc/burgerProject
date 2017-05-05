@@ -4,21 +4,23 @@
       <div class="col-sm-2 sidenav">
         {{#each ingredients}}
           {{#each imatge _id}}
-            <p><img src="{{url}}" class="w3-round-xxlarge" alt="Norway" style="width:30%"></p>
+            <p class="ingredient"><img src="{{url}}" class="w3-circle" style="width:90%"><p class="permanent" style="font-size:200%;">{{../nom}}</p></p>
           {{/each}}
-          <p>{{nom}}</p>
         {{/each}}
       </div>
       <div class="col-sm-8 text-left">
 
       </div>
       <div class="col-sm-2 sidenav">
-        <div class="well">
-          <p>ADS</p>
-        </div>
-        <div class="well">
-          <p>ADS</p>
-        </div>
+
+        {{#each subingredients}}
+          {{#each subimatge _id}}
+            <!-- <p class="subingredient"><img src="{{url}}" class="w3-circle" style="width:90%"><p class="permanent" style="font-size:200%;">{{../nom}}</p></p> -->
+            <div class="well card_subproducte overlayui blackui" style=" background-image: url('{{url}}'); color:black;">
+              <p class="permanent" style="font-size:150%;">{{../nom}}</p>
+            </div>
+          {{/each}}
+        {{/each}}
       </div>
     </div>
   </div>

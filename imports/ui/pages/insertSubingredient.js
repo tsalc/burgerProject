@@ -5,7 +5,7 @@ import { Subingredient } from "../../api/lists/subingredient/subingredient.js";
 import { crearSubingredient } from '../../api/lists/methods.js';
 import { editarSubingredient } from '../../api/lists/methods.js';
 import { Images } from '../../api/lists/producte/producte.js';
-import { ReactiveVar } from 'meteor/reactive-var'
+import { ReactiveVar } from 'meteor/reactive-var';
 
 
 Template.insertSubingredient.onCreated(function(){
