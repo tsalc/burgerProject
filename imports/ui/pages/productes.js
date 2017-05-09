@@ -17,7 +17,10 @@ Template.productes.onRendered(function(){
     var alcada = $(window).height();
     alcada = alcada - 52;
     $(".row.content").height(alcada);
-  })
+  });
+  $("#dreta").mouseover(function(){
+    	$(".card_subproducte").draggable({helper:"clone"});
+    });
 });
 
 Template.productes.helpers({

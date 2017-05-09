@@ -30,10 +30,12 @@ Template.insertSubingredient.events({
   "click #insertImatge": function(event, template){
     var nom         = $('input[name="nom"]').val();
     var ingr        = $('#ingredient').val();
+    var preu        = parseFloat($('#preu').val());
     idSubingredient = crearSubingredient.call({
       nom: nom,
       idIngredient: ingr,
-      imatge: " "
+      imatge: " ",
+      preu: preu
     }, (err, res) => {
       if (err) {
         alert(err);

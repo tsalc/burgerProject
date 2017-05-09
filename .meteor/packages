@@ -34,3 +34,4 @@ cfs:graphicsmagick
 cfs:s3
 cfs:tempstore
 cfs:power-queue
+drewproud:jquery-ui-droppable

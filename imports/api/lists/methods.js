@@ -69,10 +69,11 @@ export const crearSubingredient = new ValidatedMethod({
   validate: new SimpleSchema({
     nom: { type: String},
     idIngredient: { type: String},
-    imatge: { type: String}
+    imatge: { type: String},
+    preu: { type: Number, decimal: true}
   }).validator(),
-  run({id, nom, idIngredient, imatge}){
-    return Subingredient.insert({nom:nom, idIngredient:idIngredient, imatge:" "});
+  run({id, nom, idIngredient, imatge, preu}){
+    return Subingredient.insert({nom:nom, idIngredient:idIngredient, imatge:" ", preu:preu});
   }
 });
 
