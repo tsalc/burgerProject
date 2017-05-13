@@ -9,12 +9,12 @@ Template.productes.onCreated(function(){
   this.rIdImatge = new ReactiveVar (false);
   this.rNomImatge = new ReactiveVar (false);
   this.autorun(()=>{
-    console.log('aqui ara' + this.rIdIngredient.get());
-    Meteor.setTimeout(function(){
-      $(".card_subproducte").draggable({appendTo: '#yeldui', containment: 'html', helper:"clone" });
-    },100);
-
-    $("#focus").droppable({});
+    if(this.rIdIngredient.get()!=null){
+      Meteor.setTimeout(function(){
+        $(".card_subproducte").draggable({appendTo: '#yeldui', containment: 'html', helper:"clone" });
+        $("#focus").droppable({});
+      },100);
+    };
   })
 });
 
@@ -61,7 +61,6 @@ Template.productes.events({
   'click .ingredient': function(event, template){
     var idImatge = this._id;
     var idIngredient = Ingredient.findOne({imatge:idImatge})._id;
-    console.log(idIngredient);
     Template.instance().rIdIngredient.set(idIngredient);
   },
 
@@ -70,14 +69,11 @@ Template.productes.events({
     var nomImatge = Images.findOne({_id:idImatge}).original.name;
     // var idIngredient = Ingredient.findOne({imatge:idImatge})._id;
     Template.instance().rIdImatge.set(idImatge);
-    console.log(Template.instance().rIdImatge.get());
-    console.log(nomImatge);
     Template.instance().rNomImatge.set(nomImatge);
   },
 
   'drop #focus': function(event, template){
-    var tagImg = '<div class="cardDrop"><img src="/cfs/files/images/'+Template.instance().rIdImatge.get()+'/'+Template.instance().rNomImatge.get()+'"</img></div>'
-    console.log(tagImg);
+    var tagImg = '<div class="cardDrop"><img src="/cfs/files/images/'+Template.instance().rIdImatge.get()+'/'+Template.instance().rNomImatge.get()+'"</img></div>';
     $("#focus").add(tagImg).appendTo("#focus");
   }
 });

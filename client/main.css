@@ -48,6 +48,11 @@
 
 #focus {
   height: 100%;
+  overflow: auto;
+}
+
+#focusComanda {
+  float: left;
 }
 
 .center {
