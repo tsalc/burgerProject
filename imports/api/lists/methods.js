@@ -70,10 +70,12 @@ export const crearSubingredient = new ValidatedMethod({
     nom: { type: String},
     idIngredient: { type: String},
     imatge: { type: String},
-    preu: { type: Number, decimal: true}
+    preu: { type: Number, decimal: true},
+    pes: { type: Number},
+    posicio: { type: Number}
   }).validator(),
-  run({id, nom, idIngredient, imatge, preu}){
-    return Subingredient.insert({nom:nom, idIngredient:idIngredient, imatge:" ", preu:preu});
+  run({id, nom, idIngredient, imatge, preu, pes, posicio}){
+    return Subingredient.insert({nom:nom, idIngredient:idIngredient, imatge:" ", preu:preu, pes:pes, posicio:posicio});
   }
 });
 

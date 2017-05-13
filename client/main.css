@@ -5,13 +5,24 @@
 .card_subproducte {
   background-size: 100% 100%;
   background-repeat: no-repeat;
+  background-position: center center;
+  position: relative;
+  min-height: 150px;
 }
+.ui-draggable-dragging{
+  width: 200px;
+}
+.card_subproducte p {
+  position: absolute;
+  top:0px;
+  color: white;
+  z-index: 100;
+  padding: 10px;
+}
+
 
 .overlayui {
   position: relative;
-}
-
-.overlayui:before{
   position: absolute;
   content:" ";
   top:0;
@@ -21,19 +32,23 @@
   display: none;
   z-index:0;
   display: block;
-}
-
-.overlayui:hover:before{
-  display: none;
-}
-
-.blackui:before {
   background-color: rgba(0,0,0,0.35);
 }
 
+.card_subproducte:hover .overlayui{
+  display: none;
+}
+
+.card_subproducte:hover p{
+  color: black;
+}
 /*================================
       Fi Card subproducte
 ================================*/
+
+#focus {
+  height: 100%;
+}
 
 .center {
     margin: auto;

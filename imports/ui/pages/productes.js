@@ -6,6 +6,16 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 Template.productes.onCreated(function(){
   this.rIdIngredient = new ReactiveVar (false);
+  this.rIdImatge = new ReactiveVar (false);
+  this.rNomImatge = new ReactiveVar (false);
+  this.autorun(()=>{
+    console.log('aqui ara' + this.rIdIngredient.get());
+    Meteor.setTimeout(function(){
+      $(".card_subproducte").draggable({appendTo: '#yeldui', containment: 'html', helper:"clone" });
+    },100);
+
+    $("#focus").droppable({});
+  })
 });
 
 
@@ -18,9 +28,9 @@ Template.productes.onRendered(function(){
     alcada = alcada - 52;
     $(".row.content").height(alcada);
   });
-  $("#dreta").mouseover(function(){
-    	$(".card_subproducte").draggable({helper:"clone"});
-    });
+  // $("#dreta").mouseover(function(){
+  //   	$(".card_subproducte").draggable({helper:"clone"});
+  //   });
 });
 
 Template.productes.helpers({
@@ -53,5 +63,21 @@ Template.productes.events({
     var idIngredient = Ingredient.findOne({imatge:idImatge})._id;
     console.log(idIngredient);
     Template.instance().rIdIngredient.set(idIngredient);
+  },
+
+  'dragstart .card_subproducte': function(event, template){
+    var idImatge = this._id;
+    var nomImatge = Images.findOne({_id:idImatge}).original.name;
+    // var idIngredient = Ingredient.findOne({imatge:idImatge})._id;
+    Template.instance().rIdImatge.set(idImatge);
+    console.log(Template.instance().rIdImatge.get());
+    console.log(nomImatge);
+    Template.instance().rNomImatge.set(nomImatge);
+  },
+
+  'drop #focus': function(event, template){
+    var tagImg = '<div class="cardDrop"><img src="/cfs/files/images/'+Template.instance().rIdImatge.get()+'/'+Template.instance().rNomImatge.get()+'"</img></div>'
+    console.log(tagImg);
+    $("#focus").add(tagImg).appendTo("#focus");
   }
 });

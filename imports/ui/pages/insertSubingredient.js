@@ -31,11 +31,16 @@ Template.insertSubingredient.events({
     var nom         = $('input[name="nom"]').val();
     var ingr        = $('#ingredient').val();
     var preu        = parseFloat($('#preu').val());
+    var pes        = parseInt($('#pes').val());
+    var posicio        = parseInt($('#posicio').val());
+
     idSubingredient = crearSubingredient.call({
       nom: nom,
       idIngredient: ingr,
       imatge: " ",
-      preu: preu
+      preu: preu,
+      pes: pes,
+      posicio: posicio
     }, (err, res) => {
       if (err) {
         alert(err);
@@ -69,7 +74,4 @@ Template.insertSubingredient.events({
     var estatProducte = $('#producte').val();
     Template.instance().rIdProducte.set(estatProducte);
   }
-
-// FALTA FER UN https://themeteorchef.com/tutorials/reactive-dict-reactive-vars-and-session-variables
-
 });
