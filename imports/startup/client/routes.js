@@ -1,4 +1,4 @@
-import { Router } from 'meteor/iron:router';// import {baseLayout} from ../imports/ui/layouts/baseLayout.js;
+import { Router } from 'meteor/iron:router';
 import { Producte } from "../../api/lists/producte/producte.js";
 import '../../ui/layouts/baseLayout.js';
 import '../../ui/components/inici/inici.js';
@@ -9,6 +9,8 @@ import '../../ui/components/provaFotos/provaFotos.js';
 import '../../ui/pages/insertIngredient.js';
 import '../../ui/pages/insertSubingredient.js';
 import '../../ui/pages/productes.js';
+import '../../ui/pages/insertIngredientBase.js';
+
 
 Router.configure({
   layoutTemplate: 'baseLayout'
@@ -37,12 +39,17 @@ Router.route('/prova',function(){
 
 Router.route('/insertIngredient',function(){
   this.render('insertIngredient');
-    return Meteor.subscribe('images')
+    return Meteor.subscribe('images');
 });
 
 Router.route('/insertSubingredient',function(){
   this.render('insertSubingredient');
-    return Meteor.subscribe('images')
+    return Meteor.subscribe('images');
+});
+
+Router.route('/insertIngredientBase',function(){
+  this.render('insertIngredientBase');
+    return Meteor.subscribe('images');
 });
 
 Router.route('producte/:_id', {

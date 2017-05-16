@@ -70,12 +70,13 @@ export const crearSubingredient = new ValidatedMethod({
     nom: { type: String},
     idIngredient: { type: String},
     imatge: { type: String},
+    imatgeCentral: { type: String},
     preu: { type: Number, decimal: true},
     pes: { type: Number},
     posicio: { type: Number}
   }).validator(),
-  run({id, nom, idIngredient, imatge, preu, pes, posicio}){
-    return Subingredient.insert({nom:nom, idIngredient:idIngredient, imatge:" ", preu:preu, pes:pes, posicio:posicio});
+  run({id, nom, idIngredient, imatge, imatgeCentral, preu, pes, posicio}){
+    return Subingredient.insert({nom:nom, idIngredient:idIngredient, imatge:" ", imatgeCentral:" ", preu:preu, pes:pes, posicio:posicio});
   }
 });
 
@@ -84,14 +85,16 @@ export const editarSubingredient = new ValidatedMethod({
   validate: new SimpleSchema({
     id: { type: String },
     nom: { type: String},
-    imatge: { type: String}
+    imatge: { type: String},
+    imatgeCentral: { type: String}
   }).validator(),
-  run({id, nom, imatge}){
+  run({id, nom, imatge, imatgeCentral}){
     return Subingredient.update({
       _id: id
     },{
       $set: {
-        imatge: imatge
+        imatge: imatge,
+        imatgeCentral: imatgeCentral
       }
     });
   }

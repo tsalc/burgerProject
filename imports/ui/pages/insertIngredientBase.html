@@ -1,4 +1,4 @@
-<template name='insertSubingredient'>
+<template name='insertIngredientBase'>
   <div class="container-fluid text-center">
     <div class="row content">
       <div class="col-sm-2 sidenav">
@@ -12,7 +12,7 @@
             <div class="col-mid-4">
               <form method="post" class="form">
                 <div class="get-in-touch">
-                  <h3 class="text-center">Insereix Subingredient</h3>
+                  <h3 class="text-center">Insereix Ingredient Base</h3>
                   <br>
                   <select name="producte" id="producte">
                     <option value = "">Tria un Producte</option>
@@ -31,29 +31,27 @@
                   <br>
                   <br>
                   <div class="form-group col-mid-4">
-                    <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom del subingredient" required/>
+                    <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom del ingredient base" required/>
                   </div>
                   <div class="form-group col-mid-4">
-                    <input type="number" step=".05" class="form-control" id="preu" name="preu" placeholder="Preu del subingredient" required/>
+                    <input type="number" step=".05" class="form-control" id="preu" name="preu" placeholder="Preu del ingredient base" required/>
                   </div>
                   <div class="form-group col-mid-4">
-                    <input type="number" class="form-control" id="pes" name="pes" placeholder="Pes del subingredient" required/>
+                    <input type="number" class="form-control" id="pes" name="pes" placeholder="Pes del ingredient base" required/>
                   </div>
                   <div class="form-group col-mid-4">
-                    <input type="number" class="form-control" id="posicio" name="posicio" placeholder="Posició del subingredient" required/>
+                    <input type="number" class="form-control" id="posicio" name="posicio" placeholder="Posició del ingredient base" required/>
                   </div>
                   <div class="form-group col-mid-4">
-                    <label for="">Imatge de la barra lateral dreta</label>
                     <input id="insertImatge" type="file" name="image" class="myFileInput">
                   </div>
                   <div class="form-group col-mid-4">
-                    <label for="">Imatge central pel montatge del producte</label>
-                    <input id="insertImatgeCentral" type="file" name="image" class="myFileInput">
+                    <input id="check" type="checkbox" name="second"> Necessitem ingredient base superior?
                   </div>
                   <div class="form-group col-mid-4">
-                    <input id="isBaseProduct" type="checkbox"> És un subingredient base?
+                    <input id="insertImatgeTop" type="file" name="imageTop" class="myFileInput" style="display:none">
                   </div>
-                  <input id="insertSubproducte" type="submit" class="btn btn-success btn-sm btn-block" placeholder="Envia!"/>
+                  <input id="insertProducte" type="submit" class="btn btn-success btn-sm btn-block" placeholder="Envia!"/>
                 </div>
               </form>
             </div>

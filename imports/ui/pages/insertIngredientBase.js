@@ -1,4 +1,4 @@
-import './insertSubingredient.html';
+import './insertIngredientBase.html';
 import { Ingredient } from "../../api/lists/ingredient/ingredient.js";
 import { Producte } from "../../api/lists/producte/producte.js";
 import { Subingredient } from "../../api/lists/subingredient/subingredient.js";
@@ -8,13 +8,15 @@ import { Images } from '../../api/lists/producte/producte.js';
 import { ReactiveVar } from 'meteor/reactive-var';
 
 
-Template.insertSubingredient.onCreated(function(){
+Template.insertIngredientBase.onCreated(function(){
   this.rIdProducte = new ReactiveVar (false);
-  this.rIdImatge = new ReactiveVar (false);
-  this.rIdImatgeCentral = new ReactiveVar (false);
 });
 
-Template.insertSubingredient.helpers({
+Template.insertIngredientBase.onRendered(function(){
+  console.log(Template.instance().rIdProducte.get());
+})
+
+Template.insertIngredientBase.helpers({
   ingredient: function() {
     return Ingredient.find({idProducte:Template.instance().rIdProducte.get()});
   },
@@ -24,8 +26,8 @@ Template.insertSubingredient.helpers({
   }
 });
 
-Template.insertSubingredient.events({
-  "click #insertSubproducte": function(event, template){
+Template.insertIngredientBase.events({
+  "click #insertImatge": function(event, template){
     var nom         = $('input[name="nom"]').val();
     var ingr        = $('#ingredient').val();
     var preu        = parseFloat($('#preu').val());
@@ -36,7 +38,6 @@ Template.insertSubingredient.events({
       nom: nom,
       idIngredient: ingr,
       imatge: " ",
-      imatgeCentral: " ",
       preu: preu,
       pes: pes,
       posicio: posicio
@@ -47,41 +48,38 @@ Template.insertSubingredient.events({
         console.log('Registre afegit correctament (insertarSubingredient.js)');
       }
     });
-    editarSubingredient.call({
-      id: idSubingredient,
-      nom: "",
-      imatge: Template.instance().rIdImatge.get()._id,
-      imatgeCentral: Template.instance().rIdImatgeCentral.get()._id
-    }, (err, res) => {
-      if (err) {
-        alert(err);
-      } else {
-        console.log('Registre editat correctament (insertarSubingredient.js)');
-      }
-    });
   },
 
 
-  'change #insertImatge': function(event, template) {
+  'change .form': function(event, template) {
     FS.Utility.eachFile(event, function(file) {
       idImatge = Images.insert(file, function (err, fileObj) {
         // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
       });
-      Template.instance().rIdImatge.set(idImatge);
-    });
-  },
-
-  'change #insertImatgeCentral': function(event, template) {
-    FS.Utility.eachFile(event, function(file) {
-      idImatgeCentral = Images.insert(file, function (err, fileObj) {
-        // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
+      editarSubingredient.call({
+        id: idSubingredient,
+        nom: "",
+        imatge: idImatge._id
+      }, (err, res) => {
+        if (err) {
+          alert(err);
+        } else {
+          console.log('Registre editat correctament (insertProducte.js)');
+        }
       });
-      Template.instance().rIdImatgeCentral.set(idImatgeCentral);
     });
   },
 
   'change #producte': function (event, template){
     var estatProducte = $('#producte').val();
     Template.instance().rIdProducte.set(estatProducte);
+  },
+
+  'click #check': function(event, template){
+    if ($("#check").is(':checked')){
+      $("#insertImatgeTop").show();
+    }else{
+      $("#insertImatgeTop").hide();
+    }
   }
 });

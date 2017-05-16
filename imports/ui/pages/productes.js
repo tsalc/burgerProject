@@ -66,14 +66,17 @@ Template.productes.events({
 
   'dragstart .card_subproducte': function(event, template){
     var idImatge = this._id;
-    var nomImatge = Images.findOne({_id:idImatge}).original.name;
-    // var idIngredient = Ingredient.findOne({imatge:idImatge})._id;
-    Template.instance().rIdImatge.set(idImatge);
+    console.log(idImatge);
+    var idImatgeCentral = Subingredient.findOne({imatge:idImatge}).imatgeCentral;
+    console.log(idImatgeCentral);
+    var nomImatge = Images.findOne({_id:idImatgeCentral}).original.name;
+    Template.instance().rIdImatge.set(idImatgeCentral);
     Template.instance().rNomImatge.set(nomImatge);
   },
 
   'drop #focus': function(event, template){
     var tagImg = '<div class="cardDrop"><img src="/cfs/files/images/'+Template.instance().rIdImatge.get()+'/'+Template.instance().rNomImatge.get()+'"</img></div>';
     $("#focus").add(tagImg).appendTo("#focus");
+    $(".cardDrop").last().focus()
   }
 });
