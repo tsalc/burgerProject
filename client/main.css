@@ -49,6 +49,7 @@
 #focus {
   height: 100%;
   overflow: auto;
+  position: relative;
 }
 
 #focusComanda {
@@ -221,7 +222,7 @@ Image credits: unsplash.com
     .hero h1 { font-size: 4em; }
 }
 /********************************/
-/*          Productes           */
+/*          Prova               */
 /********************************/
 .hamburguesaCreada img{
   width: 300px;
@@ -256,6 +257,19 @@ Image credits: unsplash.com
   top: 230px;
   z-index: -60;
 }
+
+/********************************/
+/*          Productes           */
+/********************************/
+.cardDrop img {
+  width: 75%;
+  padding-left: 25%;
+}
+
+/********************************/
+/*          Animacio            */
+/********************************/
+
 
 /********************************/
 /*      Biblioteca de fonts     */

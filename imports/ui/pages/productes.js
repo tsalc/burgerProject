@@ -75,8 +75,24 @@ Template.productes.events({
   },
 
   'drop #focus': function(event, template){
-    var tagImg = '<div class="cardDrop"><img src="/cfs/files/images/'+Template.instance().rIdImatge.get()+'/'+Template.instance().rNomImatge.get()+'"</img></div>';
+    var tagImg = '<div class="cardDrop"><img src="/cfs/files/images/'+Template.instance().rIdImatge.get()+'/'+Template.instance().rNomImatge.get()+'"></div>';
     $("#focus").add(tagImg).appendTo("#focus");
-    $(".cardDrop").last().focus()
+  },
+
+  'click #animacio': function(event, template){
+    //console.log("anim");
+    var n = 0;
+    var i = -10;
+    var px = "px";
+    $("#focus > *:nth-child(n)").each(function() {
+      //console.log(this);
+      px = n+px;
+      $(this).css("top", px);
+      $(this).css("position", "absolute");
+      $(this).css("z-index", i);
+      px = "px";
+      n = n + 30;
+      i = i -10;
+    });
   }
 });
