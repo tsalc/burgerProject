@@ -7,7 +7,7 @@
       <div id="focusComanda" class="col-sm-8 text-left">
         {{#each producte}}
           {{#each imatge _id}}
-            <a href="producte/{{../_id}}"><img src="{{url}}" class="w3-circle" style="width:20%"><p class="permanent" style="font-size:200%;">{{../nom}}</p></a>
+            <a href="producte/{{../_id}}" class="col-md-4"><div style="height:230px"><img src="{{url}}" class="w3-circle img-responsive"></div><p class="permanent" style="font-size:200%;">{{../nom}}</p></a>
           {{/each}}
         {{/each}}
       </div>
