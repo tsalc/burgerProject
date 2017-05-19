@@ -8,6 +8,7 @@ Template.productes.onCreated(function(){
   this.rIdIngredient = new ReactiveVar (false);
   this.rIdImatge = new ReactiveVar (false);
   this.rNomImatge = new ReactiveVar (false);
+  this.rPosicio = new ReactiveVar (0);
   this.autorun(()=>{
     if(this.rIdIngredient.get()!=null){
       Meteor.setTimeout(function(){
@@ -75,8 +76,14 @@ Template.productes.events({
   },
 
   'drop #focus': function(event, template){
-    var tagImg = '<div class="cardDrop"><img src="/cfs/files/images/'+Template.instance().rIdImatge.get()+'/'+Template.instance().rNomImatge.get()+'"></div>';
+    var pos = Template.instance().rPosicio.get();
+    console.log(pos);
+    var tagImg = '<div class="cardDrop" style="top: '+pos+'px"><img src="/cfs/files/images/'+Template.instance().rIdImatge.get()+'/'+Template.instance().rNomImatge.get()+'"></div>';
     $("#focus").add(tagImg).appendTo("#focus");
+    //$("#focus").scrollTop($("#focus")[0].scrollHeight);
+    console.log(this);
+    Template.instance().rPosicio.set(pos+323);
+    console.log(Template.instance().rPosicio.get());
   },
 
   'click #animacio': function(event, template){
@@ -87,6 +94,8 @@ Template.productes.events({
     $("#focus > *:nth-child(n)").each(function() {
       //console.log(this);
       px = n+px;
+      //$(this).css("top", px);
+      $(this).animate({ "top": px }, "slow" );
       $(this).css("top", px);
       $(this).css("position", "absolute");
       $(this).css("z-index", i);

@@ -261,6 +261,9 @@ Image credits: unsplash.com
 /********************************/
 /*          Productes           */
 /********************************/
+.cardDrop {
+  position: absolute;
+}
 .cardDrop img {
   width: 75%;
   padding-left: 25%;
