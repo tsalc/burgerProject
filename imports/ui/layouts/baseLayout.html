@@ -6,6 +6,11 @@
     font-family: 'Lobster', cursive;
     font-size: 250%;
   }
+
+  .lobster {
+    font-family: 'Lobster', cursive;
+    font-size: 150%;
+  }
 </style>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -22,11 +27,98 @@
         <li class="active"><a href="{{pathFor 'inici'}}">Inici</a></li>
         <li><a href="{{pathFor 'comandes'}}">Comandes</a></li>
         <li><a href="#">Qui som?</a></li>
-        <li><a href="#">Contacta</a></li>
+        <li><a href="{{pathFor 'comandes'}}">Contacta</a></li>
+        {{#if currentUser}}
+        <li><a href="{{pathFor 'comandes'}}">Gestiona</a></li>
+        {{/if}}
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        {{#if currentUser}}
+          <li><a data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-log-in"></span>  Hola, {{currentUserHelper}}</a></li>
+
+
+        {{else}}
+          <li><a data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-log-in"></span>  Login</a></li>
+        {{/if}}
       </ul>
+
+
+
+
+
+      <!-- Modal -->
+       <div class="modal fade" id="myModal" role="dialog">
+         <div class="modal-dialog">
+
+           <!-- Modal content-->
+           <div class="modal-content">
+             <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+             </div>
+             <div class="modal-body">
+              {{#if currentUser}}
+                <a id="logout" style="margin-right:2%" class="btn btn-success lobster">Logout</a>
+                 
+              {{else}}
+              <form id="form">
+                <div class="container">
+
+                  <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                      <div class="input-group" style="margin-left:10%;margin-bottom:2%">
+                        <span class="input-group-addon" style="width:100px;">Nom d'usuari</span>
+                        <input type="text" id="nom" class="form-control" aria-describedby="basic-addon1" name="modalNom" value="">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                      <div class="input-group" style="margin-left:10%;margin-bottom:2%">
+                        <span class="input-group-addon" style="width:100px;">Contrasenya</span>
+                        <input type="password" id="contrasenya" class="form-control" aria-describedby="basic-addon1" name="modalEmail" value="">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                      <div style="margin-left:10%;margin-bottom:2%">
+                        <button id="login" type="submit" style="margin-right:2%" class="btn btn-success lobster">Login</button>
+                        <a id="regist" class="btn btn-info lobster">Registra't</a>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </form>
+              {{/if}}
+             </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+             </div>
+           </div>
+
+
+         </div>
+       </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
   </div>
 </nav>

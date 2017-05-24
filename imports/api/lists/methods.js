@@ -4,6 +4,7 @@ import { SimpleSchema } from "meteor/aldeed:simple-schema";
 import { Producte } from "./producte/producte.js";
 import { Ingredient } from "./ingredient/ingredient.js";
 import { Subingredient } from "./subingredient/subingredient.js";
+import { Accounts } from 'meteor/accounts-base';
 
 export const crearProducte = new ValidatedMethod({
   name: "producte.add",
@@ -98,4 +99,23 @@ export const editarSubingredient = new ValidatedMethod({
       }
     });
   }
+});
+
+export const crearUsuari = new ValidatedMethod({
+  name: "user.add",
+  validate: new SimpleSchema({
+    email: { type: String},
+    name: { type: String}
+  }).validator(),
+  run({email,name}) {
+    if(!this.userId){
+      throw new Meteor.Error( "Meteor.users.edit.unauthorized",
+                              "Permís denegat. Cal estar identificat");
+      }
+
+      let profile = {'name': name};
+      let mail = [{"address": email, "verified": false}];
+
+      return Meteor.users.insert({email:email,profile:profile});
+    }
 });

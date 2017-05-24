@@ -68,6 +68,7 @@ Template.insertSubingredient.events({
         // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
       });
       Template.instance().rIdImatge.set(idImatge);
+      console.log(Template.instance().rIdImatge.get());
     });
   },
 
@@ -77,6 +78,7 @@ Template.insertSubingredient.events({
         // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
       });
       Template.instance().rIdImatgeCentral.set(idImatgeCentral);
+      console.log(Template.instance().rIdImatgeCentral.get());
     });
   },
 
