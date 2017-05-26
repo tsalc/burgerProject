@@ -104,18 +104,22 @@ export const editarSubingredient = new ValidatedMethod({
 export const crearUsuari = new ValidatedMethod({
   name: "user.add",
   validate: new SimpleSchema({
-    email: { type: String},
-    name: { type: String}
+    username: { type: String},
+    password: { type: String}
   }).validator(),
-  run({email,name}) {
-    if(!this.userId){
-      throw new Meteor.Error( "Meteor.users.edit.unauthorized",
-                              "Permís denegat. Cal estar identificat");
-      }
-
-      let profile = {'name': name};
-      let mail = [{"address": email, "verified": false}];
-
-      return Meteor.users.insert({email:email,profile:profile});
+  run({username,password}) {
+      return Accounts.createUser({username:username, password:password});
     }
 });
+
+// export const afegirRolUsuari = new ValidatedMethod({
+//   name: "rol.add",
+//   validate: new SimpleSchema({
+//     id: { type: String},
+//     rol: { type: String}
+//   }).validator(),
+//   run({id,rol}) {
+//     console.log('afegirRol');
+//     Roles.addUsersToRoles(id,[rol])
+//   }
+// });

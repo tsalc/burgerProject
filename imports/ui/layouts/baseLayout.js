@@ -1,12 +1,22 @@
-import { Meteor } from 'meteor/meteor'
+import { Meteor } from 'meteor/meteor';
 import './baseLayout.html';
 import '../../startup/accounts-config.js';
+import { crearUsuari } from '../../api/lists/methods.js';
+import { afegirRolUsuari } from '../../api/lists/methods.js';
 
+Template.baseLayout.onCreated(function(){
+  this.idUserVarReact = new ReactiveVar (false);
+});
 
 Template.baseLayout.helpers({
   currentUserHelper: function() {
     return Meteor.user().username;
+  },
+
+  idUserMethod: function() {
+    return Template.instance().idUserVarReact.get();
   }
+
 });
 
 Template.baseLayout.events({
@@ -28,20 +38,34 @@ Template.baseLayout.events({
     event.preventDefault();
     var usernameVar = template.find('#nom').value;
     var passwordVar = template.find('#contrasenya').value;
-    Accounts.createUser({
-      username: usernameVar,
-      password: passwordVar
-    },function(err){
-      if (err){
-        alert(err.message);
-      }
-    });
-
+    var idUser = Accounts.createUser({
+     username: usernameVar,
+     password: passwordVar
+   },function(err){
+     if (err){
+       alert(err.message);
+     }
+     else {
+       Template.instance().idUserVarReact.set(idUser);
+       $('#myModal').modal('toggle');
+     }
+});
+    console.log(idUsuari);
+    // afegirRolUsuari.call({
+    //   id:id,
+    //   rol:'usuari'
+    // });
+    $('#myModal').modal('toggle');
   },
 
   'click #logout': function(event, template){
     event.preventDefault();
     Meteor.logout();
+    $('#myModal').modal('toggle');
+  },
+
+  'click #cancel': function(event, template){
+    event.preventDefault();
     $('#myModal').modal('toggle');
   }
 });

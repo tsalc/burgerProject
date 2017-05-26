@@ -36,3 +36,5 @@ drewproud:jquery-ui-droppable   # lib to add jquery droopable
 accounts-ui-unstyled
 accounts-password
 accounts-base
+alanning:roles
+session

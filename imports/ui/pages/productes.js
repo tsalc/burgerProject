@@ -1,4 +1,5 @@
 import './productes.html';
+import { Producte } from "../../api/lists/producte/producte.js";
 import { Ingredient } from "../../api/lists/ingredient/ingredient.js";
 import { Subingredient } from "../../api/lists/subingredient/subingredient.js";
 import { Images } from '../../api/lists/producte/producte.js';
@@ -9,11 +10,12 @@ Template.productes.onCreated(function(){
   this.rIdImatge = new ReactiveVar (false);
   this.rNomImatge = new ReactiveVar (false);
   this.rPosicio = new ReactiveVar (0);
+  this.rCarrito = new ReactiveVar (false);
   this.autorun(()=>{
     if(this.rIdIngredient.get()!=null){
       Meteor.setTimeout(function(){
         $(".card_subproducte").draggable({appendTo: '#yeldui', containment: 'html', helper:"clone" });
-        $("#focus").droppable({});
+        $("#focusImg").droppable({});
       },100);
     };
   })
@@ -29,9 +31,6 @@ Template.productes.onRendered(function(){
     alcada = alcada - 52;
     $(".row.content").height(alcada);
   });
-  // $("#dreta").mouseover(function(){
-  //   	$(".card_subproducte").draggable({helper:"clone"});
-  //   });
 });
 
 Template.productes.helpers({
@@ -67,31 +66,41 @@ Template.productes.events({
 
   'dragstart .card_subproducte': function(event, template){
     var idImatge = this._id;
-    console.log(idImatge);
+    var nomSubingredient = Subingredient.findOne({imatge:idImatge}).nom;
+    var idSubingredient = Subingredient.findOne({imatge:idImatge})._id;
+    var idIngredient = Subingredient.findOne({imatge:idImatge}).idIngredient;
+    var objecte = Template.instance().rCarrito.get();
     var idImatgeCentral = Subingredient.findOne({imatge:idImatge}).imatgeCentral;
-    console.log(idImatgeCentral);
     var nomImatge = Images.findOne({_id:idImatgeCentral}).original.name;
+    if (!Template.instance().rCarrito.get()){
+      // AFEGIR Objecte
+      var objecte = {};
+      var idProducte = Ingredient.findOne({_id:idIngredient}).idProducte;
+      var nomProducte = Producte.findOne({_id:idProducte}).nom;
+      objecte.producte = nomProducte;
+      objecte.list = [];
+    }
+    var objecteAux = {subingredient:nomSubingredient}
+    objecte.list.push(objecteAux);
+    Template.instance().rCarrito.set(objecte);
+    console.log(Template.instance().rCarrito.get());
     Template.instance().rIdImatge.set(idImatgeCentral);
     Template.instance().rNomImatge.set(nomImatge);
   },
 
   'drop #focus': function(event, template){
     var pos = Template.instance().rPosicio.get();
-    console.log(pos);
     var tagImg = '<div class="cardDrop" style="top: '+pos+'px"><img src="/cfs/files/images/'+Template.instance().rIdImatge.get()+'/'+Template.instance().rNomImatge.get()+'"></div>';
-    $("#focus").add(tagImg).appendTo("#focus");
-    //$("#focus").scrollTop($("#focus")[0].scrollHeight);
-    console.log(this);
+    $("#focusImg").add(tagImg).appendTo("#focusImg");
     Template.instance().rPosicio.set(pos+323);
-    console.log(Template.instance().rPosicio.get());
   },
 
-  'click #animacio': function(event, template){
+  'click #carroSi': function(event, template){
     //console.log("anim");
     var n = 0;
     var i = -10;
     var px = "px";
-    $("#focus > *:nth-child(n)").each(function() {
+    $("#focusImg > *:nth-child(n)").each(function() {
       //console.log(this);
       px = n+px;
       //$(this).css("top", px);
@@ -103,5 +112,16 @@ Template.productes.events({
       n = n + 30;
       i = i -10;
     });
+    $('#finallyModal').modal('toggle');
+    $("#focusImg").droppable('disable');
+    $( "#animacio" ).prop( "disabled", true );
+  },
+
+  'click #carrito': function(event, Template) {
+    if($('#divCarrito').css('display') == 'none'){
+      $('#divCarrito').show(400);
+    }else{
+      $('#divCarrito').hide(400);
+    }
   }
 });

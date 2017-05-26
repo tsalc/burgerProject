@@ -42,14 +42,66 @@
 .card_subproducte:hover p{
   color: black;
 }
-/*================================
-      Fi Card subproducte
-================================*/
 
+
+/*================================
+      Botó ajunta productes
+================================*/
+#animacio {
+  position:fixed;
+  bottom: 10px;
+  right: 20%;
+  z-index: 1;
+}
+
+#carrito {
+  position:absolute;
+  top: 10px;
+  right: 0px;
+  z-index: 1;
+  height: 50px;
+  width: 75px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  background: lightgray;
+}
+
+#divCarrito {
+  position: fixed;
+  right: 16.6666%;
+  z-index: 1;
+  background: black;
+}
+
+#torna {
+  position:absolute;
+  top: 10px;
+  left: 0px;
+  z-index: 1;
+  height: 50px;
+  width: 75px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  background: lightgray;
+}
+
+#torna:hover{
+  background: lightgray;
+}
+
+#torna span.glyphicon-arrow-left{
+  font-size: 30px;
+
+}
 #focus {
   height: 100%;
   overflow: auto;
   position: relative;
+}
+
+#focusImg {
+  height: 100%;
+  overflow: auto;
 }
 
 #focusComanda {

@@ -28,7 +28,7 @@
         <li><a href="{{pathFor 'comandes'}}">Comandes</a></li>
         <li><a href="#">Qui som?</a></li>
         <li><a href="{{pathFor 'comandes'}}">Contacta</a></li>
-        {{#if currentUser}}
+        {{#if isInRole 'usuari'}}
         <li><a href="{{pathFor 'comandes'}}">Gestiona</a></li>
         {{/if}}
       </ul>
@@ -53,12 +53,18 @@
            <!-- Modal content-->
            <div class="modal-content">
              <div class="modal-header">
+               <input type="text" id="idUserVarReact" value="Hola">
                <button type="button" class="close" data-dismiss="modal">&times;</button>
              </div>
              <div class="modal-body">
               {{#if currentUser}}
-                <a id="logout" style="margin-right:2%" class="btn btn-success lobster">Logout</a>
-                 
+                <div class="col-md-12 col-lg-12">
+                  <p>Vols tencar la sessió?</p>
+                </div>
+                <div class="row">
+                  <a id="logout" style="margin-right:2%;margin-left:5%" class="btn btn-success lobster">Si!</a>
+                  <a id="cancel" style="margin-right:2%" class="btn btn-danger lobster">Cancela</a>
+                </div>
               {{else}}
               <form id="form">
                 <div class="container">

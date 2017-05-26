@@ -8,11 +8,16 @@
           {{/each}}
         {{/each}}
       </div>
-      <button type="button" name="button" id="animacio">Ajunta</button>
+
       <div id="focus" class="col-sm-8 text-left">
+        <a href="{{pathFor 'comandes'}}" id="torna" class="btn btn-basic" type="button"><span class="glyphicon glyphicon-arrow-left"></span></a>
+        <button id="animacio" class="btn btn-default lobster" type="button" name="button" data-toggle="modal" data-target="#finallyModal">Finalitza</button>
+        <button id="carrito" class="btn btn-default lobster" type="button" ><span class="glyphicon glyphicon-shopping-cart"></span></button>
 
-
+        <div id="focusImg"></div>
       </div>
+      <div id="divCarrito" class="col-sm-2 text-left" style="display:none">jksagdkjasgdkjasgdkjasg</div>
+
       <div id="dreta" class="col-sm-2 sidenav">
 
         {{#each subingredients}}
@@ -27,4 +32,32 @@
       </div>
     </div>
   </div>
+
+  <!-- Modal -->
+   <div class="modal fade" id="finallyModal" role="dialog">
+     <div class="modal-dialog">
+
+       <!-- Modal content-->
+       <div class="modal-content">
+         <div class="modal-header">
+           <button type="button" class="close" data-dismiss="modal">&times;</button>
+         </div>
+         <div class="modal-body">
+           <div class="col-md-12 col-lg-12">
+             <p>Vols afegir al carro?</p>
+           </div>
+           <div class="row">
+             <a id="carroSi" style="margin-right:2%;margin-left:5%" class="btn btn-success lobster">Si!</a>
+             <a id="carroNo" style="margin-right:2%" class="btn btn-danger lobster" data-dismiss="modal">Cancela</a>
+           </div>
+         </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         </div>
+       </div>
+
+
+     </div>
+   </div>
+
 </template>

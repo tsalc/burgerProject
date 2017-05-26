@@ -14,7 +14,7 @@ Template.insertIngredientBase.onCreated(function(){
 
 Template.insertIngredientBase.onRendered(function(){
   console.log(Template.instance().rIdProducte.get());
-})
+});
 
 Template.insertIngredientBase.helpers({
   ingredient: function() {
