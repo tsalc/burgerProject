@@ -55,9 +55,9 @@
 }
 
 #carrito {
-  position:absolute;
-  top: 10px;
-  right: 0px;
+  position:fixed;
+  top: 60px;
+  right: 16.6666%;
   z-index: 1;
   height: 50px;
   width: 75px;
@@ -66,17 +66,59 @@
   background: lightgray;
 }
 
+#carrito:hover{
+  color: #337ab7;
+}
+
 #divCarrito {
   position: fixed;
+  top: 60px;
+  height: 75%;
   right: 16.6666%;
   z-index: 1;
-  background: black;
+  background: lightgray;
+  overflow: auto;
+}
+
+.titolProducteC{
+  font-weight: bold;
+  font-size: 20px;
+  padding-top: 5px;
+}
+
+.textCEsquerra {
+  width: 75%;
+  float: left;
+  padding-left: 10px;
+}
+
+.textCDreta {
+  width: 25%;
+  float: left;
+  padding-left: 10px;
+}
+
+.separador{
+  width: 100%;
+  float: left;
+  border-width: medium;
+}
+
+.total{
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#pagar{
+  font-size: 100%;
+  float: right;
+  margin-bottom: 10px;
 }
 
 #torna {
-  position:absolute;
-  top: 10px;
-  left: 0px;
+  position:fixed;
+  top: 60px;
+  left: 16.6666%;
   z-index: 1;
   height: 50px;
   width: 75px;
@@ -87,6 +129,7 @@
 
 #torna:hover{
   background: lightgray;
+  color: #337ab7;
 }
 
 #torna span.glyphicon-arrow-left{

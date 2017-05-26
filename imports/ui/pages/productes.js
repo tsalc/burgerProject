@@ -120,8 +120,10 @@ Template.productes.events({
   'click #carrito': function(event, Template) {
     if($('#divCarrito').css('display') == 'none'){
       $('#divCarrito').show(400);
+      $('#carrito').animate({"right": "33.2222%"}, "400");
     }else{
       $('#divCarrito').hide(400);
+      $('#carrito').animate({"right": "16.6666%"}, "400");
     }
   }
 });
