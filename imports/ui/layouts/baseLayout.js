@@ -30,6 +30,8 @@ Template.baseLayout.events({
       }
       else{
          $('#myModal').modal('toggle');
+         Session.set('sCarrito',false);
+         Router.go('/');
       }
     });
   },
@@ -41,20 +43,17 @@ Template.baseLayout.events({
     var idUser = Accounts.createUser({
      username: usernameVar,
      password: passwordVar
-   },function(err){
+    },function(err){
      if (err){
        alert(err.message);
      }
      else {
        Template.instance().idUserVarReact.set(idUser);
        $('#myModal').modal('toggle');
+       Session.set('sCarrito',false);
+       Router.go('/');
      }
-});
-    console.log(idUsuari);
-    // afegirRolUsuari.call({
-    //   id:id,
-    //   rol:'usuari'
-    // });
+    });
     $('#myModal').modal('toggle');
   },
 
@@ -62,6 +61,8 @@ Template.baseLayout.events({
     event.preventDefault();
     Meteor.logout();
     $('#myModal').modal('toggle');
+    Session.set('sCarrito',false);
+    Router.go('/');
   },
 
   'click #cancel': function(event, template){

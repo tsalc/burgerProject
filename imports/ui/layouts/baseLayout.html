@@ -28,8 +28,8 @@
         <li><a href="{{pathFor 'comandes'}}">Comandes</a></li>
         <li><a href="#">Qui som?</a></li>
         <li><a href="{{pathFor 'comandes'}}">Contacta</a></li>
-        {{#if isInRole 'usuari'}}
-        <li><a href="{{pathFor 'comandes'}}">Gestiona</a></li>
+        {{#if currentUser}}
+        <li><a href="{{pathFor 'tabularProducte'}}">Gestiona</a></li>
         {{/if}}
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -53,7 +53,6 @@
            <!-- Modal content-->
            <div class="modal-content">
              <div class="modal-header">
-               <input type="text" id="idUserVarReact" value="Hola">
                <button type="button" class="close" data-dismiss="modal">&times;</button>
              </div>
              <div class="modal-body">
@@ -104,27 +103,8 @@
                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
              </div>
            </div>
-
-
          </div>
        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
   </div>
 </nav>

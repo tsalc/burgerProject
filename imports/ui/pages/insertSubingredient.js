@@ -43,18 +43,26 @@ Template.insertSubingredient.events({
     }, (err, res) => {
       if (err) {
         alert(err);
+        console.log("crear");
+        console.log(ingr);
       } else {
         console.log('Registre afegit correctament (insertarSubingredient.js)');
       }
     });
     editarSubingredient.call({
       id: idSubingredient,
-      nom: "",
+      nom: Subingredient.findOne({_id:idSubingredient}).nom,
+      idIngredient: ingr,
       imatge: Template.instance().rIdImatge.get()._id,
-      imatgeCentral: Template.instance().rIdImatgeCentral.get()._id
+      imatgeCentral: Template.instance().rIdImatgeCentral.get()._id,
+      preu: Subingredient.findOne({_id:idSubingredient}).preu,
+      pes: Subingredient.findOne({_id:idSubingredient}).pes,
+      posicio: Subingredient.findOne({_id:idSubingredient}).posicio
     }, (err, res) => {
       if (err) {
         alert(err);
+        console.log("editar");
+        console.log(ingr);
       } else {
         console.log('Registre editat correctament (insertarSubingredient.js)');
       }

@@ -34,3 +34,12 @@ Images.allow({
     return true;
   }
 });
+
+new Tabular.Table({
+   name: "Productes",
+   collection: Producte,
+   columns: [
+   {data: "_id", title: "id"},
+   {data: "nom", title: "Nom"}
+   ]
+});

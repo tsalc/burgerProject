@@ -16,66 +16,21 @@
 
         <div id="focusImg"></div>
       </div>
-      <div id="divCarrito" class="col-sm-2 text-left" style="display:none">
-        <div class="producteCarrito">
-          <p class="titolProducteC">Producte</p>
-          <div class="textCarrito">
-            <p class="textCEsquerra">Ingredients</p>
-            <p class="textCDreta">Preu</p>
-            <p class="textCEsquerra">Ingredient2</p>
-            <p class="textCDreta">Preu2</p>
+      <div id="divCarrito" class="text-left" style="display:none">
+        {{#each carrito}}
+          <div class="producteCarrito">
+            <p class="titolProducteC">{{producte}}</p>
+            <div class="textCarrito">
+              <p class="textCEsquerra">{{subingredient}}</p>
+              <p class="textCDreta">{{preu}} €</p>
+            </div>
           </div>
-        </div>
-        <div class="producteCarrito">
-          <p class="titolProducteC">Producte</p>
-          <div class="textCarrito">
-            <p class="textCEsquerra">Ingredients</p>
-            <p class="textCDreta">Preu</p>
-            <p class="textCEsquerra">Ingredient2</p>
-            <p class="textCDreta">Preu2</p>
-          </div>
-        </div>
-        <div class="producteCarrito">
-          <p class="titolProducteC">Producte</p>
-          <div class="textCarrito">
-            <p class="textCEsquerra">Ingredients</p>
-            <p class="textCDreta">Preu</p>
-            <p class="textCEsquerra">Ingredient2</p>
-            <p class="textCDreta">Preu2</p>
-          </div>
-        </div>
-        <div class="producteCarrito">
-          <p class="titolProducteC">Producte</p>
-          <div class="textCarrito">
-            <p class="textCEsquerra">Ingredients</p>
-            <p class="textCDreta">Preu</p>
-            <p class="textCEsquerra">Ingredient2</p>
-            <p class="textCDreta">Preu2</p>
-          </div>
-        </div>
-        <div class="producteCarrito">
-          <p class="titolProducteC">Producte</p>
-          <div class="textCarrito">
-            <p class="textCEsquerra">Ingredients</p>
-            <p class="textCDreta">Preu</p>
-            <p class="textCEsquerra">Ingredient2</p>
-            <p class="textCDreta">Preu2</p>
-          </div>
-        </div>
-        <div class="producteCarrito">
-          <p class="titolProducteC">Producte</p>
-          <div class="textCarrito">
-            <p class="textCEsquerra">Ingredients</p>
-            <p class="textCDreta">Preu</p>
-            <p class="textCEsquerra">Ingredient2</p>
-            <p class="textCDreta">Preu2</p>
-          </div>
-        </div>
+        {{/each}}
         <div class="total">
           <hr class="separador">
           <p class="textCEsquerra">Total:</p>
-          <p class="textCDreta">25€</p>
-          <button id="pagar" class="btn lobster" type="button" name="button" data-toggle="modal" data-target="#finallyModal">Pagar</button>
+          <p class="textCDreta">{{total}} €</p>
+          <button id="pagar" class="btn lobster" type="button">Pagar</button>
         </div>
       </div>
 

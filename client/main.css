@@ -74,6 +74,7 @@
   position: fixed;
   top: 60px;
   height: 75%;
+  width: 16.6666%;
   right: 16.6666%;
   z-index: 1;
   background: lightgray;
@@ -92,7 +93,7 @@
   padding-left: 10px;
 }
 
-.textCDreta {
+.textCDreta {  
   width: 25%;
   float: left;
   padding-left: 10px;
@@ -109,10 +110,21 @@
   font-size: 20px;
 }
 
+.total .textCEsquerra {
+  width: 60%;
+}
+
+.total .textCDreta {
+  width: 40%;
+  text-align: right;
+  padding-right: 10px;
+}
+
 #pagar{
   font-size: 100%;
   float: right;
   margin-bottom: 10px;
+  margin-right: 10px;
 }
 
 #torna {

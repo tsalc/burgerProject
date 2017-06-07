@@ -38,7 +38,7 @@ Template.insertIngredient.events({
       });
       editarIngredient.call({
         id: idIngredient,
-        nom: "",
+        nom: Ingredient.findOne({_id:idIngredient}).nom,
         imatge: idImatge._id
       }, (err, res) => {
         if (err) {

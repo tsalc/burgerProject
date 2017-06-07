@@ -1,0 +1,28 @@
+<template name="editarProducte">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <a href="{{pathFor 'insertProducte'}}" class="btn btn-basic" type="button">Crear Producte</a>
+        <a href="{{pathFor 'insertIngredient'}}" class="btn btn-basic" type="button">Crear Ingredient</a>
+        <a href="{{pathFor 'insertSubingredient'}}" class="btn btn-basic" type="button">Crear Subingredient</a>
+        <a href="{{pathFor 'tabularProducte'}}" class="btn btn-basic" type="button">Llistat Productes</a>
+        <a href="{{pathFor 'tabularIngredient'}}" class="btn btn-basic" type="button">Llistat Ingredient</a>
+        <a href="{{pathFor 'tabularSubingredient'}}" class="btn btn-basic" type="button">Llistat Subingredient</a>
+      </div>
+      <div class="panel-body">
+        <form method="post" class="form">
+          <div class="get-in-touch">
+            <h3 class="text-center">Editar Producte</h3>
+            <br>
+            <div class="form-group col-md-4">
+              <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom del producte" value="{{nom}}" required/>
+            </div>
+            <br><br><br>
+            <div class="form-group col-md-1">
+              <input id="editar" type="text" class="btn btn-success btn-sm btn-block editar" placeholder="Editar">
+              <input id="borrar" type="text" class="btn btn-danger btn-sm btn-block borrar" placeholder="Borrar">
+            </div>
+          </div>
+        </form>
+    </div>
+  </div>
+</template>
