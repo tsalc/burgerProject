@@ -2,6 +2,7 @@ import './insertProducte.html';
 import { crearProducte } from '../../api/lists/methods.js';
 import { editarProducte } from '../../api/lists/methods.js';
 import '../../api/lists/producte/producte.js';
+import { Producte } from '../../api/lists/producte/producte.js';
 import { Images } from '../../api/lists/producte/producte.js';
 
 //Aquí haig de fer un template events al formulari de insertProducte i fer un Meteor.call del valida
@@ -34,7 +35,7 @@ Template.insertProducte.events({
       console.log(nom);
       editarProducte.call({
         id: idProducte,
-        nom: "",
+        nom: Producte.findOne({_id:idProducte}).nom,
         imatge: idImatge._id
       }, (err, res) => {
         if (err) {
